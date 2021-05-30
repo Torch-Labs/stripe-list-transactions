@@ -2,5 +2,6 @@
 
 to run:
 
-npm i
-npm run generate
+### `npm i`
+
+### `npm run generate`

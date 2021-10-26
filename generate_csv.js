@@ -4,7 +4,7 @@ const { refunds } = require("./data/refunds.js");
 const { invoices } = require("./data/invoices.js");
 const { checkouts } = require("./data/checkouts.js");
 const fs = require("fs");
-const { writeAllData } = require("./read_data_from_stripe");
+// const { writeAllData } = require("./read_data_from_stripe");
 
 const CHECKOUT_MAP = new Map();
 const INVOICE_MAP = new Map();
@@ -12,6 +12,7 @@ const INVOICE_MAP = new Map();
 // payment_intent, date, product_id, product_name, customer_email, amount
 
 function verifyData() {
+  console.log(transactions.length, invoices.length, checkouts.length);
   const sum = invoices.length + checkouts.length - transactions.length;
   return sum === 0;
   // console.log(checkouts.length);
@@ -90,13 +91,13 @@ function writeCSVDebit() {
 }
 
 (async () => {
-  await writeAllData();
-  if (verifyData()) {
-    writeCSVCredit();
-    writeCSVDebit();
-  } else {
-    throw new Error("Checkouts and invoices dont add up to charges");
-  }
+  // await writeAllData();
+  // if (verifyData()) {
+  writeCSVCredit();
+  writeCSVDebit();
+  // } else {
+  //   throw new Error("Checkouts and invoices dont add up to charges");
+  // }
 })();
 
 // console.log(transactions.length);

@@ -76,6 +76,7 @@ async function writeAllData() {
   await getRefunds();
 }
 
-module.exports = {
-  writeAllData,
-};
+writeAllData();
+// module.exports = {
+//   writeAllData,
+// };
